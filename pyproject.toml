@@ -1,0 +1,14 @@
+[project]
+name = "image-toolkit"
+description = "ComfyUI nodes for image processing."
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/keit0728/ComfyUI-Image-Toolkit"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-Image-Toolkit"
+Icon = ""
