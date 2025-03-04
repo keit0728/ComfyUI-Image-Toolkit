@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+from ..utils import convert_to_grayscale
 
 
 class BinarizeImage:
@@ -40,7 +41,7 @@ class BinarizeImage:
 
         for image in images_np:
             processed_image = image.copy()
-            grayscale = np.mean(image[:, :, :3], axis=2)
+            grayscale = convert_to_grayscale(image)[:, :, 0]
             binary_mask = np.where(grayscale >= normalized_threshold, 1.0, 0.0)
 
             for i in range(3):
