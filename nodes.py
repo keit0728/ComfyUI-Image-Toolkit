@@ -1,6 +1,7 @@
 import numpy as np
 import torch
 from PIL import Image
+from .utils import convert_to_grayscale
 
 
 class BrightnessTransparency:
@@ -142,28 +143,8 @@ class GrayscaleImage:
 
         result_images = []
 
-        # 常に均等な重みを使用
-        r_weight, g_weight, b_weight = 1 / 3, 1 / 3, 1 / 3
-
         for image in images_np:
-            # グレースケール値を計算
-            grayscale = (
-                r_weight * image[:, :, 0]
-                + g_weight * image[:, :, 1]
-                + b_weight * image[:, :, 2]
-            )
-
-            # 出力画像を作成
-            result_image = np.zeros_like(image)
-            for i in range(3):
-                result_image[:, :, i] = grayscale
-
-            # アルファチャンネルがある場合は保持
-            if image.shape[2] == 4:
-                result_image[:, :, 3] = image[
-                    :, :, 3
-                ]  # アルファチャンネルをコピー
-
+            result_image = convert_to_grayscale(image)
             result_images.append(result_image)
 
         result_np = np.stack(result_images)
