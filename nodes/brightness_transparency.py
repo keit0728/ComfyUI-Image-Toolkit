@@ -1,5 +1,6 @@
 import numpy as np
 import torch
+from ..utils import convert_to_grayscale
 
 
 class BrightnessTransparency:
@@ -38,13 +39,13 @@ class BrightnessTransparency:
                     (image.shape[0], image.shape[1], 4), dtype=np.float32
                 )
                 rgba_image[:, :, :3] = image
-                rgba_image[:, :, 3] = 1.0  # Range 0.0-1.0
+                rgba_image[:, :, 3] = 1.0
             else:
                 rgba_image = image.copy()
 
-            # Set alpha values inversely proportional to brightness (bright=transparent, dark=opaque)
-            brightness = np.mean(rgba_image[:, :, :3], axis=2)
-            alpha = 1.0 - brightness
+            grayscale_image = convert_to_grayscale(rgba_image)
+            grayscale = grayscale_image[:, :, 0]  # グレースケール値取得
+            alpha = 1.0 - grayscale
             rgba_image[:, :, 3] = alpha
 
             result_images.append(rgba_image)
