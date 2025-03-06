@@ -18,7 +18,7 @@ class RemoveWhiteBackgroundNoise:
                 "threshold": (
                     "INT",
                     {
-                        "default": 250,
+                        "default": 240,
                         "min": 0,
                         "max": 255,
                         "step": 1,
