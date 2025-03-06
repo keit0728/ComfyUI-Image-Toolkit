@@ -9,6 +9,6 @@ Repository = "https://github.com/keit0728/ComfyUI-Image-Toolkit"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "keit0728"
 DisplayName = "ComfyUI-Image-Toolkit"
 Icon = ""
