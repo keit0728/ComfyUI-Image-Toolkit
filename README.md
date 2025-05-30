@@ -1,58 +1,66 @@
 # ComfyUI-Image-Toolkit
 
-**ComfyUI 用カスタムノードパック**
+**Custom Node Pack for ComfyUI**
 
-このノードパックは、画像処理と変換のための便利なツールを提供します。
+This node pack provides convenient tools for image processing and transformation.
 
-## 機能
+## Features
 
-このパックには以下のノードが含まれています：
+This pack includes the following nodes:
 
 ### BrightnessTransparency
 
-明るさに基づいて透明度を調整します。明るい部分は透明に、暗い部分は不透明になります。
+Adjusts transparency based on brightness. Bright areas become transparent, while dark areas remain opaque.
+
+### AlphaToGrayscale
+
+Converts alpha channel (transparency) to grayscale values. Functions as the inverse transformation of BrightnessTransparency, restoring brightness information that was expressed as transparency back to grayscale images.
+
+### AlphaFlatten
+
+Flattens images with alpha channels by compositing them against a white background. Transparent areas are composited with white background and output as RGB images without transparency.
 
 ### BinarizeImage
 
-画像を 2 値化します。指定した閾値より明るい部分は白（1.0）に、暗い部分は黒（0.0）に変換されます。
+Binarizes images. Areas brighter than the specified threshold become white (1.0), while darker areas become black (0.0).
 
 ### BinarizeImageUsingOtsu
 
-画像を大津の二値化アルゴリズムを使用して自動的に 2 値化します。最適な閾値を自動的に計算し、画像内の明暗を分離します。
+Automatically binarizes images using Otsu's binarization algorithm. Automatically calculates the optimal threshold and separates light and dark areas in the image.
 
 ### RemoveWhiteBackgroundNoise
 
-白背景に混じったノイズを除去します。指定した閾値で二値化を行い、白背景部分を完全な白に置き換えることでノイズを除去します。
+Removes noise mixed in white backgrounds. Performs binarization with the specified threshold and replaces white background areas with pure white to remove noise.
 
 ### GrayscaleImage
 
-カラー画像をグレースケールに変換します。RGB 値を均等に処理して、グレースケール画像を生成します。
+Converts color images to grayscale. Processes RGB values uniformly to generate grayscale images.
 
 ### AntialiasingImage
 
-アンチエイリアシング効果を画像に適用します。画像を一度拡大してから元のサイズに戻すことで、エッジを滑らかにします。
+Applies antialiasing effects to images. Smooths edges by first upscaling the image and then returning it to the original size.
 
-## インストール方法
+## Installation
 
-### 推奨方法
+### Recommended Method
 
-- [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager)を使用してインストールします。
+- Install using [ComfyUI-Manager](https://github.com/ltdrdata/ComfyUI-Manager).
 
-### 手動インストール
+### Manual Installation
 
-1. `ComfyUI/custom_nodes`ディレクトリに移動します。
-2. 以下のコマンドでリポジトリをクローンします：
+1. Navigate to the `ComfyUI/custom_nodes` directory.
+2. Clone the repository with the following command:
    ```
    git clone https://github.com/your-username/ComfyUI-Image-Toolkit
    cd ComfyUI-Image-Toolkit
    ```
 
-## 使用方法
+## Usage
 
-1. ComfyUI を起動します。
-2. ノードブラウザで「ComfyUI-Image-Toolkit」カテゴリを探します。
-3. 必要なノードをワークフローに追加して使用します。
+1. Launch ComfyUI.
+2. Look for the "ComfyUI-Image-Toolkit" category in the node browser.
+3. Add the required nodes to your workflow and use them.
 
-## ライセンス
+## License
 
 GPL-3.0 license
